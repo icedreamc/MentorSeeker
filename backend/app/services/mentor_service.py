@@ -452,10 +452,11 @@ def batch_enrich_mentors(db: Session, mentor_ids: list[int], sleep_seconds: floa
     if str(settings.project_root) not in sys.path:
         sys.path.insert(0, str(settings.project_root))
 
-    if "mentor_enrichment" in sys.modules:
-        mentor_enrichment = importlib.reload(sys.modules["mentor_enrichment"])
+    enrichment_module_name = "backend.app.pipeline.mentor_enrichment"
+    if enrichment_module_name in sys.modules:
+        mentor_enrichment = importlib.reload(sys.modules[enrichment_module_name])
     else:
-        mentor_enrichment = importlib.import_module("mentor_enrichment")
+        mentor_enrichment = importlib.import_module(enrichment_module_name)
 
     enriched_data, output_file = mentor_enrichment.run_enrichment(
         input_file=str(input_file),
@@ -641,3 +642,4 @@ def batch_delete_mentors_permanently(db: Session, mentor_ids: list[int]) -> dict
         "deleted_notes": int(deleted_notes),
         "deleted_timeline": int(deleted_timeline),
     }
+

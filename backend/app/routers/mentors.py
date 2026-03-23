@@ -115,7 +115,7 @@ def enrich_mentors(payload: MentorBatchEnrichRequest, db: Session = Depends(get_
     try:
         result = batch_enrich_mentors(db, mentor_ids=payload.mentor_ids, sleep_seconds=payload.sleep_seconds)
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=500, detail="Batch enrichment failed. Check local secrets settings.") from exc
+        raise HTTPException(status_code=500, detail=f"Batch enrichment failed: {exc}") from exc
     return MentorBatchEnrichResult(**result)
 
 
@@ -212,3 +212,4 @@ def delete_mentor(mentor_id: int, db: Session = Depends(get_db)) -> dict:
         "deleted": bool(result["deleted_mentor"]),
         **result,
     }
+
