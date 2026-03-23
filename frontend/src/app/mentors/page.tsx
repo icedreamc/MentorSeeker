@@ -243,22 +243,22 @@ export default function MentorsPage() {
             <div className="grid two">
               <label className="field">
                 <span className="field-label">导师姓名 *</span>
-                <input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="例如：Bo Li" />
+                <input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="例如：李华" />
               </label>
               <label className="field">
                 <span className="field-label">学校 *</span>
-                <input value={newSchool} onChange={(e) => setNewSchool(e.target.value)} placeholder="例如：HKUST" />
+                <input value={newSchool} onChange={(e) => setNewSchool(e.target.value)} placeholder="例如：武汉大学" />
               </label>
             </div>
 
             <div className="grid two">
               <label className="field">
                 <span className="field-label">研究方向 *</span>
-                <input value={newField} onChange={(e) => setNewField(e.target.value)} placeholder="例如：data science" />
+                <input value={newField} onChange={(e) => setNewField(e.target.value)} placeholder="例如：LLM" />
               </label>
               <label className="field">
                 <span className="field-label">头衔</span>
-                <input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="例如：Associate Professor" />
+                <input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="例如：助理教授" />
               </label>
             </div>
 
